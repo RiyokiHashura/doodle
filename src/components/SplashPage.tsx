@@ -31,17 +31,17 @@ const DoodleCanvas = styled.svg`
   fill: none;
 `;
 
-interface StyledSVGProps {
+interface StyledProps {
   $delay: string;
 }
 
-const DoodlePath = styled.path<StyledSVGProps>`
+const DoodlePath = styled.path<StyledProps>`
   stroke-dasharray: 1000;
   animation: ${draw} 3s ease-in-out forwards;
   animation-delay: ${props => props.$delay};
 `;
 
-const DoodleCircle = styled.circle<StyledSVGProps>`
+const DoodleCircle = styled.circle<StyledProps>`
   stroke-dasharray: 1000;
   animation: ${draw} 2s ease-in-out forwards;
   animation-delay: ${props => props.$delay};

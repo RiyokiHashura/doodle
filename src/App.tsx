@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import VoiceRecorder from './components/VoiceRecorder';
 import MessageList from './components/MessageList';
+import SplashPage from './components/SplashPage';
 import { VoiceMessageProvider } from './context/VoiceMessageContext';
 
 const AppContainer = styled.div`
@@ -12,12 +13,22 @@ const AppContainer = styled.div`
 `;
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  const handleEnter = () => {
+    setShowSplash(false);
+  };
+
   return (
     <VoiceMessageProvider>
-      <AppContainer>
-        <VoiceRecorder />
-        <MessageList />
-      </AppContainer>
+      {showSplash ? (
+        <SplashPage onEnter={handleEnter} />
+      ) : (
+        <AppContainer>
+          <VoiceRecorder />
+          <MessageList />
+        </AppContainer>
+      )}
     </VoiceMessageProvider>
   );
 }
